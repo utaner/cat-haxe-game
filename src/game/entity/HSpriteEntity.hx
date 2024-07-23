@@ -59,6 +59,7 @@ abstract class HSpriteEntity extends BaseEntity {
     }
 
     public override function blink(c:Col):Void {
+        if (this.isAlive() == false) return;
         blinkColor.setColor(c);
         cd.setS("keepBlink", 0.06);
     }

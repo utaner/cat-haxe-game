@@ -38,9 +38,16 @@ class Player extends HSpriteEntity {
     var manaTimer:Float = 0 ;
 
     public var darkLightningSkillActive:Bool = false ;
+
     public var darkLightningSkillCooldown:Float = 300 ;
     var darkLightningSkillTimer:Float = 0 ;
     public var darkLightningSkillDamage:Int = 5 ;
+
+    public var darkCircleSkillActive:Bool = false ;
+    public var darkCircleSkillCooldown:Float = 300 ;
+    var darkCircleSkillTimer:Float = 0 ;
+    public var darkCircleSkillDamage:Int = 5 ;
+
 
     public function new() {
         super(5, 5);
@@ -106,6 +113,10 @@ class Player extends HSpriteEntity {
         }
 
 
+    }
+
+    override function onDie() {
+        App.ME.restartGame();
     }
 
     public function addNewParticle() {
@@ -306,7 +317,7 @@ class Player extends HSpriteEntity {
 
             for (e in en.Mob.ALL) {
                 if (distPx(e) < 50 && darkLightningSkillTimer > darkLightningSkillCooldown) {
-                    var darkLightning = new ParticleTwo(darkLightningSkillDamage);
+                    var darkLightning = new ParticleThree(darkLightningSkillDamage);
                     darkLightning.setPosPixel(e.attachX, e.attachY);
 
                     darkLightningSkillTimer = 0;
@@ -315,6 +326,23 @@ class Player extends HSpriteEntity {
                 }
             }
         }
+
+        //darklightning skill
+        if (darkCircleSkillActive) {
+            //yakınlardaki rastgele bir düşmanın üstüne ekle
+            darkCircleSkillTimer += tmod;
+
+            for (e in en.Mob.ALL) {
+                if (distPx(e) < 50 && darkCircleSkillTimer > darkCircleSkillCooldown) {
+                    var darkCircle = new ParticleTwo(darkCircleSkillDamage);
+                    darkCircle.setPosPixel(e.attachX, e.attachY);
+
+                    darkCircleSkillTimer = 0;
+
+                }
+            }
+        }
+
 
     }
 

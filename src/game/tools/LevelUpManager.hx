@@ -9,9 +9,10 @@ class LevelUpManager {
     //array skils {name, desc, icon}
     private static var skills = [
         [["Plazma Topu", "Plazma topu yeteneğinizi aktif eder.", D.tiles.plazmaicon], ["Plazma Topu 2", "1 adet daha plazma topu ekler.", D.tiles.plazmaicon]],
-        [["Karanlık Şişmek", "Rastgele bir düşmanın üzerine şişmek düşer.", D.tiles.darklightningicon], ["Karanlık Şişmek 2", "Şimşeğin hasarını 5 arttırır.", D.tiles.darklightningicon], ["Karanlık Şişmek 3", "Daha sık şimşek atarsınız.", D.tiles.darklightningicon]],
-        [["Teme Saldırı Gücü", "Temel saldırı gücünüzü 1 arttırır.", D.tiles.sword]],
+        [["Büyülü Şişmek", "Rastgele bir düşmanın üzerine şişmek düşer.", D.tiles.darklightningicon], ["Büyülü Şişmek 2", "Şimşeğin hasarını 5 arttırır.", D.tiles.darklightningicon], ["Büyülü Şişmek 3", "Daha sık şimşek atarsınız.", D.tiles.darklightningicon]],
+        [["Temel Saldırı Gücü", "Temel saldırı gücünüzü 1 arttırır.", D.tiles.sword]],
         [["Maksimium Sağlık +%10", "Maksimum sağlığınızı yüzde 10 arttırır.", D.tiles.heart]],
+        [["Büyülü Çember", "Rastgele bir düşmanı çemberin içine alarak öldürür.", D.tiles.darkcircleicon]],
     ] ;
 
     private static function getRandSkill() {
@@ -23,8 +24,8 @@ class LevelUpManager {
             if (randomSkills.indexOf(rand) == -1) {
                 if (Game.ME.player.activeSkills[rand] == null || Game.ME.player.activeSkills[rand] < skills[rand].length - 1) {
                     randomSkills.push(rand);
+                    i++;
                 }
-                i++;
             }
         }
         return randomSkills;
@@ -57,6 +58,9 @@ class LevelUpManager {
             case 3:
                 Game.ME.player.initLife(Math.round(Game.ME.player.getLifeMax() * 1.1));
                 Game.ME.player.renderLife(Game.ME.player.getLifeValue(), 100);
+            case 4:
+                Game.ME.player.darkCircleSkillActive = true;
+                Game.ME.hud.addNewSkillSlot(D.tiles.darkcircleslot);
         }
     }
 
@@ -66,6 +70,7 @@ class LevelUpManager {
 
         //random 3 skill
         var randomSkills = getRandSkill();
+
         for (skill in randomSkills) {
 
             var skill_level = Game.ME.player.activeSkills[skill] == null ? 0 : Game.ME.player.activeSkills[skill];

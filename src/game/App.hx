@@ -45,6 +45,16 @@ class App extends dn.Process {
         startGame();
     }
 
+    public function restartGame() {
+        if (Game.exists()) {
+            Game.ME.destroy();
+            if (dn.heaps.GameFocusHelper.isUseful())
+                new dn.heaps.GameFocusHelper(scene, Assets.fontPixel);
+            startGame();
+
+        }
+    }
+
     function onWindowEvent(ev:hxd.Event) {
         switch ev.kind {
             case EPush:

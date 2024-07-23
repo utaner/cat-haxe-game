@@ -28,6 +28,7 @@ class Assets {
     public static var mouseaxe:SpriteLib;
     public static var particle:SpriteLib;
     public static var particle2:SpriteLib;
+    public static var particle3:SpriteLib;
     public static var all_entity:SpriteLib;
 
 
@@ -51,6 +52,7 @@ class Assets {
         mouseaxe = dn.heaps.assets.Aseprite.convertToSLib(Const.FPS, hxd.Res.atlas.mouse_axe.toAseprite());
         particle = dn.heaps.assets.Aseprite.convertToSLib(Const.FPS, hxd.Res.atlas.particle.toAseprite());
         particle2 = dn.heaps.assets.Aseprite.convertToSLib(Const.FPS, hxd.Res.atlas.particle2.toAseprite());
+        particle3 = dn.heaps.assets.Aseprite.convertToSLib(Const.FPS, hxd.Res.atlas.particle3.toAseprite());
         all_entity = dn.heaps.assets.Aseprite.convertToSLib(Const.FPS, hxd.Res.atlas.entity.toAseprite());
 
         characterAttachPts = new Map();
