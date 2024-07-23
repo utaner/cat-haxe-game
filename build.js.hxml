@@ -1,0 +1,4 @@
+_base.hxml
+-dce std
+-js bin/client.js
+-D js-es=6

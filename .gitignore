@@ -1,0 +1,14 @@
+redist/
+bin/
+dump/
+res/.tmp/
+res/**/backups/
+
+# VScode
+.vscode/settings.json
+out
+
+.vscode
+.idea
+*.log
+*.iml
