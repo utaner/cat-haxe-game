@@ -1,3 +1,6 @@
+![Alt Text](res/preview.png)
+
+
 # Cat Haxe Game
 
 **Cat Haxe Game** is a cat-themed, Vampire Survivors-inspired game built with the [Haxe](https://haxe.org/) programming language, the [Heaps.io](https://heaps.io) game engine, and [Aseprite](https://www.aseprite.org/) for pixel art and animations. The game combines dynamic gameplay with retro pixel-art aesthetics.
