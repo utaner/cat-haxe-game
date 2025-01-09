@@ -1,4 +1,4 @@
-![Alt Text](res/preview.png)
+![Alt Text](res/preview.jpg)
 
 
 # Cat Haxe Game
